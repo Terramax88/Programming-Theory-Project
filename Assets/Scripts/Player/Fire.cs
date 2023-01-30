@@ -6,7 +6,8 @@ public class Fire : MonoBehaviour
 {
     public GameObject bullet;
     public float spawnTime;
-    public Transform bulletSpawn;
+    public Transform gun;
+    public Transform Bullets;
 
     void Update()
     {
@@ -32,7 +33,7 @@ public class Fire : MonoBehaviour
     {
         while (true)
         {
-            Instantiate(bullet, bulletSpawn.position, bulletSpawn.parent.rotation);
+            Instantiate(bullet, gun.position, gun.parent.rotation,Bullets);
             yield return new WaitForSeconds(spawnTime);
         }        
     }
