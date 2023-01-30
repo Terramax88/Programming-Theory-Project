@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
+    public int damage = 10;
     Rigidbody rigidbody;
 
     Vector3 startPosition;
@@ -17,10 +18,24 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        ChegaradanCiqqanda();
+    }
+
+    private void ChegaradanCiqqanda()
+    {
         float distance = Vector3.Distance(transform.position, startPosition);
-        if(distance > 100)
+        if (distance > 100)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {        
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Bullet tregired");
+            other.GetComponent<Enemy>().getDamage(damage);
         }
     }
 

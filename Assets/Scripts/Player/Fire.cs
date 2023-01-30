@@ -44,8 +44,9 @@ public class Fire : MonoBehaviour
         //Debug.Log(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.point);
-            transform.LookAt(hit.point);
+            //Debug.Log(hit.point);
+            Vector3 lookPoint = new Vector3(hit.point.x, 0, hit.point.z);
+            transform.LookAt(lookPoint);
         }
     }
 }
