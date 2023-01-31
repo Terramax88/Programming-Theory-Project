@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class GameManager : MonoBehaviour
         {
             if (value > 0) m_Score = value;
             else m_Score = 0;
+            scoreText.text = "score: " + m_Score;
         }
     }
+
+    [SerializeField] TextMeshProUGUI scoreText;
 }
