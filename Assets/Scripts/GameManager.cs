@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private bool isGameOver = false;
-    public bool IsGameOVer
+    public bool IsGameOVer // ENCAPSULATION
     {
         get
         {
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private int m_Score;
-    public int Score
+    public int Score // ENCAPSULATION
     {
         get { return m_Score; }
         set

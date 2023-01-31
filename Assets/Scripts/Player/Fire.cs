@@ -19,7 +19,7 @@ public class Fire : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            LookAtMousePosition();
+            LookAtMousePosition(); // ABSTRACTION
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -38,7 +38,7 @@ public class Fire : MonoBehaviour
         }        
     }
 
-    void LookAtMousePosition()
+    void LookAtMousePosition() // ABSTRACTION
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

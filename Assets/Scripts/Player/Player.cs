@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class Player : ObjectWithHealth
 {
     private void Start()
@@ -9,7 +10,7 @@ public class Player : ObjectWithHealth
         FindManager();
     }
 
-    public override void Dead()
+    public override void Dead() // POLYMORPHISM
     {
         gameManager.IsGameOVer = true;
     }

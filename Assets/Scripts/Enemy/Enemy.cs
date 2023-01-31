@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : ObjectWithHealth
+
+public class Enemy : ObjectWithHealth // INHERITANCE
 {
     [SerializeField] private int damage = 10;
     NavMeshAgent navMeshAgent;
@@ -29,10 +30,10 @@ public class Enemy : ObjectWithHealth
             return;
         }
         navMeshAgent.SetDestination(target.position);
-        PlayerYaqinida();
+        PlayerYaqinida(); // ABSTRACTION
     }
 
-    void PlayerYaqinida()
+    void PlayerYaqinida() // ABSTRACTION
     {
         if(Vector3.Distance(target.position, transform.position) < 2)
         {
@@ -54,7 +55,7 @@ public class Enemy : ObjectWithHealth
         }
     }
 
-    public override void Dead()
+    public override void Dead() // POLYMORPHISM
     {
         gameManager.Score++;
         target = null;

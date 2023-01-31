@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        ChegaradanCiqqanda();
+        ChegaradanCiqqanda(); // ABSTRACTION
     }
 
     private void ChegaradanCiqqanda()

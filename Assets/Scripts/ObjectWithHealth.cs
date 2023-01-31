@@ -7,7 +7,7 @@ public abstract class ObjectWithHealth : MonoBehaviour
     [SerializeField] private int health = 10;
     protected GameManager gameManager;
 
-    protected void FindManager()
+    protected void FindManager() // ABSTRACTION
     {        
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
@@ -22,5 +22,5 @@ public abstract class ObjectWithHealth : MonoBehaviour
         }
     }
 
-    public abstract void Dead();
+    public abstract void Dead(); // ABSTRACTION
 }
