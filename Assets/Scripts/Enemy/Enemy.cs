@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : ObjectWithHealth
 {
-    public int damage = 10;
+    [SerializeField] private int damage = 10;
     NavMeshAgent navMeshAgent;
     Transform target;
 
@@ -14,6 +14,7 @@ public class Enemy : ObjectWithHealth
     // Start is called before the first frame update
     void Start()
     {
+        FindManager();
         if (GameObject.FindGameObjectWithTag("Player") == null) return;
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -22,7 +23,11 @@ public class Enemy : ObjectWithHealth
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;
+        if (gameManager.IsGameOVer)
+        {
+            if (navMeshAgent != null) navMeshAgent.Stop();
+            return;
+        }
         navMeshAgent.SetDestination(target.position);
         PlayerYaqinida();
     }
@@ -42,16 +47,17 @@ public class Enemy : ObjectWithHealth
     IEnumerator DamageAndWait()
     {
         is_DamageCourotineStarted = true;
-        while (true)
+        while (!gameManager.IsGameOVer)
         {
-            yield return new WaitForSeconds(1f);
             target.GetComponent<Player>().getDamage(damage);
-            if (target.GetComponent<Player>().is_Dead) {
-                target = null;
-                StopAllCoroutines();
-            }
+            yield return new WaitForSeconds(1f);
         }
     }
 
-    
+    public override void Dead()
+    {
+        gameManager.Score++;
+        target = null;
+        StopAllCoroutines();
+    }
 }

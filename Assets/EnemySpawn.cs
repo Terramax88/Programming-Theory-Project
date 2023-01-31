@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public float timeBetweenSpawn = 0.1f;
-    public GameObject enemyPrefabs;
-    public Transform Enemes;
+    [SerializeField] private float timeBetweenSpawn = 0.1f;
+    [SerializeField] private GameObject enemyPrefabs;
+    [SerializeField] private Transform Enemes;
+
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         StartCoroutine(Spawn());
     }
 
     IEnumerator Spawn()
     {
-        while (true)
+        while (!gameManager.IsGameOVer)
         {
             yield return new WaitForSeconds(timeBetweenSpawn);
             Instantiate(enemyPrefabs, transform.position, enemyPrefabs.transform.rotation, Enemes);

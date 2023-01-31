@@ -2,18 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectWithHealth : MonoBehaviour
+public abstract class ObjectWithHealth : MonoBehaviour
 {
-    public int health = 10;
-    public bool is_Dead = false;
+    [SerializeField] private int health = 10;
+    protected GameManager gameManager;
+
+    protected void FindManager()
+    {        
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+    }
 
     public virtual void getDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
-            is_Dead = true;
+            Dead();
+            Destroy(gameObject);            
         }
     }
+
+    public abstract void Dead();
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public GameObject bullet;
-    public float spawnTime;
-    public Transform gun;
-    public Transform Bullets;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float spawnTime;
+    [SerializeField] private Transform gun;
+    [SerializeField] private Transform Bullets;
 
     void Update()
     {

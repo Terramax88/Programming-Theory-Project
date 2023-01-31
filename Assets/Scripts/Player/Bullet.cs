@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public int damage = 10;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private int damage = 10;
     Rigidbody rigidbody;
 
     Vector3 startPosition;
@@ -34,7 +34,6 @@ public class Bullet : MonoBehaviour
     {        
         if (other.CompareTag("Enemy"))
         {
-            Debug.Log("Bullet tregired");
             other.GetComponent<Enemy>().getDamage(damage);
         }
     }
